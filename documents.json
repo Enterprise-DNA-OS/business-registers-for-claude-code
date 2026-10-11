@@ -1,11 +1,42 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "register-review",
+    "title": "Register review pack",
+    "for_each": "select id,name from registers.registers order by name",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Purpose and policy",
+        "sql": "select name,country,personal_data,purpose,review_days from registers.registers where id=$1"
+      },
+      {
+        "title": "Records",
+        "sql": "select title,owner,status,due_on,review_due_on,blockers from registers.record_overview where register_id=$1 order by title"
+      },
+      {
+        "title": "Review actions",
+        "sql": "select a.title,a.issue,a.detail from registers.attention a join registers.records r on r.id=a.id where r.register_id=$1 order by a.title,a.issue"
+      }
+    ]
+  },
+  {
+    "name": "record-handover",
+    "title": "Record handover",
+    "for_each": "select id,title as name from registers.records order by title",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Record",
+        "sql": "select title,owner,status,due_on,values from registers.records where id=$1"
+      },
+      {
+        "title": "Dependencies",
+        "sql": "select d.title,d.owner,d.status,d.due_on from registers.links l join registers.records d on d.id=l.to_id where l.from_id=$1 and l.kind='depends-on' order by d.title"
+      },
+      {
+        "title": "Review evidence",
+        "sql": "select actor,note,reviewed_on,next_due from registers.reviews where record_id=$1 order by reviewed_on"
+      }
     ]
   }
 ]

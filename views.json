@@ -1,13 +1,31 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Business Registers for Claude Code: what needs attention, rendered by npm run view",
+    "title": "The weekly operations review",
+    "subtitle": "Read-only snapshot. Change records through your coding agent.",
     "sections": [
       {
         "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "sql": "select register,title,owner,issue,detail from registers.attention order by issue,title"
+      },
+      {
+        "title": "Work by owner",
+        "sql": "select * from registers.workload order by overdue desc,owner"
+      }
+    ]
+  },
+  {
+    "name": "governance",
+    "title": "Register governance",
+    "sections": [
+      {
+        "title": "Privacy record checks",
+        "note": "Review prompts, not a legal compliance certificate. Business dates are configured by the operator.",
+        "sql": "select register,title,rule,basis,finding from registers.compliance order by register,title"
+      },
+      {
+        "title": "Record inventory",
+        "sql": "select register,status,count(*)::int as records from registers.record_overview group by register,status order by register,status"
       }
     ]
   }

@@ -1,0 +1,24 @@
+{
+  "captured": "2026-10-11",
+  "fixture": "Fictional Harbour Research, npm run demo",
+  "screens": [
+    {
+      "title": "The weekly attention list",
+      "ask": "What is overdue, blocked or waiting for a review?",
+      "command": "npm run registers -- attention",
+      "output": "  register               title                        owner  issue             detail                                                                               \n  ---------------------  ---------------------------  -----  ----------------  -------------------------------------------------------------------------------------\n  Research participants  Participant interview 008    Aroha  ACCURACY-REVIEW   Accuracy check due under the business review schedule; check before use or disclosure\n  Research participants  Participant interview 014    Ben    ACCURACY-REVIEW   Accuracy check due under the business review schedule; check before use or disclosure\n  Client services        Harbour interview summary    Ben    BLOCKED           1 incomplete dependencies                                                            \n  Client services        Kauri customer report        Aroha  BLOCKED           1 incomplete dependencies                                                            \n  Client services        Kauri customer report        Aroha  OVERDUE           2026-10-08                                                                           \n  Client services        Kauri follow-up                     OVERDUE           2026-10-10                                                                           \n  Evidence library       Kauri source reconciliation  Mere   OVERDUE           2026-10-09                                                                           \n  Research participants  Participant interview 008    Aroha  RETENTION-REVIEW  Purpose and retention review overdue; check lawful need and any retention duties     \n  Client services        Kauri customer report        Aroha  STALE             No update in 30 days (business policy)                                               \n  Client services        Kauri follow-up                     UNASSIGNED        No owner"
+    },
+    {
+      "title": "Work held up elsewhere",
+      "ask": "Which unfinished records are blocking client work?",
+      "command": "npm run registers -- dependencies",
+      "output": "  register         waiting record             waiting for                  blocker owner  blocker status  due on    \n  ---------------  -------------------------  ---------------------------  -------------  --------------  ----------\n  Client services  Harbour interview summary  Harbour transcript sign-off  Mere           open            2026-10-12\n  Client services  Kauri customer report      Kauri source reconciliation  Mere           active          2026-10-09"
+    },
+    {
+      "title": "Work by owner",
+      "ask": "Who has overdue work across our registers?",
+      "command": "npm run registers -- workload",
+      "output": "  owner       open records  overdue  waiting  reviews due\n  ----------  ------------  -------  -------  -----------\n  Mere        2             1        0        0          \n  Aroha       1             1        0        0          \n  Unassigned  1             1        0        1          \n  Ben         2             0        1        1"
+    }
+  ]
+}

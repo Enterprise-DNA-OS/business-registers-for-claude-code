@@ -1,0 +1,42 @@
+[
+  [
+    "Which overdue promises are waiting on evidence in another register?",
+    "dependencies"
+  ],
+  [
+    "Who has the most overdue work across all our registers?",
+    "workload"
+  ],
+  [
+    "Which records have no owner and need assigning today?",
+    "attention"
+  ],
+  [
+    "Which active records have not changed in a month?",
+    "attention"
+  ],
+  [
+    "Which participant records are due for an accuracy check?",
+    "compliance"
+  ],
+  [
+    "Which personal records have no retention review date?",
+    "retention-review"
+  ],
+  [
+    "Which retained records are on a documented hold?",
+    "retention-review"
+  ],
+  [
+    "Where are required custom fields still missing?",
+    "data-quality"
+  ],
+  [
+    "How many estimated hours sit with each owner at each stage?",
+    "rollup --register=\"Client services\" --field=Hours"
+  ],
+  [
+    "What did an operator change, and when?",
+    "history"
+  ]
+]
